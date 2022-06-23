@@ -115,7 +115,7 @@ public class DenounceRepositoryImp implements DenounceRepository {
             return 2;
         }
 
-        final String query = "insert into denuncias (id, iddenunciante, iddenounced, idfiscal, description, state)"+
+        final String query = "insert into denounces (id, iddenunciante, iddenounced, idfiscal, description, state)"+
                 "values (:id, :iddenunciante, :iddenounced, :idfiscal, :description, :state)";
 
         try (conn) {

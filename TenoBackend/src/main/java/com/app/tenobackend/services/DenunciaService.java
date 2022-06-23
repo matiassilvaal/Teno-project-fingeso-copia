@@ -40,7 +40,7 @@ public class DenunciaService {
 
     /*
     * Formato de ingreso de insert:
-    * .../denounces/insert?descripcion='{descripcion}'&denunciante='{correo denunciante}'&denunciado='{correo denunciado}'
+    * .../denounces/insert?descripcion={descripcion}&denunciante='{correo denunciante}'&denunciado='{correo denunciado}'
     *
     * Consideraciones: Es necesario que cada dato ingresado esté entre comillas, por algún motivo sin eso mysql lo
     * rechaza :)
