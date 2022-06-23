@@ -1,17 +1,17 @@
 package com.app.tenobackend.models;
 
-public class Denuncia {
+public class Denounce {
     private Integer id;
     private Integer iddenunciante;
-    private Integer iddenunciado;
+    private Integer iddenounced;
     private Integer idfiscal;
     private String descripcion;
     private String state;
 
-    public Denuncia(Integer id, Integer iddenunciante, Integer iddenunciado, Integer idfiscal, String descripcion, String state){
+    public Denounce(Integer id, Integer iddenunciante, Integer iddenounced, Integer idfiscal, String descripcion, String state){
         this.id = id;
         this.iddenunciante = iddenunciante;
-        this.iddenunciado = iddenunciado;
+        this.iddenounced = iddenounced;
         this.idfiscal = idfiscal;
         this.descripcion = descripcion;
         this.state = state;
@@ -19,7 +19,7 @@ public class Denuncia {
 
     public Integer getId(){return this.id;}
     public Integer getIddenunciante(){return this.iddenunciante;}
-    public Integer getIddenunciado(){return this.iddenunciado;}
+    public Integer getIddenounced(){return this.iddenounced;}
     public Integer getIdfiscal(){return this.idfiscal;}
     public String getDescripcion(){return this.descripcion;}
     public String getState(){return this.state;}
@@ -28,8 +28,8 @@ public class Denuncia {
         this.id = id;
     }
 
-    public void setIddenunciado(Integer iddenunciado) {
-        this.iddenunciado = iddenunciado;
+    public void setIddenounced(Integer iddenounced) {
+        this.iddenounced = iddenounced;
     }
 
     public void setIddenunciante(Integer iddenunciante) {

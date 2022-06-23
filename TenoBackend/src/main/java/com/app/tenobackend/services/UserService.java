@@ -32,4 +32,9 @@ public class UserService {
     public User getOneDiploma(@RequestParam String id){
         return userRepository.getOneUser(id);
     }
+    @GetMapping("/getidbycorreo")
+    @ResponseBody
+    public int getIdByCorreo(@RequestParam String correo){
+        return userRepository.getIdByCorreo(correo);
+    }
 }

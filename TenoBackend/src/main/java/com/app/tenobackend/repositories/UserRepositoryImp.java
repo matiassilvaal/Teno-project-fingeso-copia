@@ -71,12 +71,10 @@ public class UserRepositoryImp implements UserRepository{
 
     public int getIdByCorreo(String correo){
         final String query = "select * from users where correo ="+correo;
-        final User diploma;
 
         Connection conn = sql2o.open();
         try (conn){
-            diploma = conn.createQuery(query).executeAndFetchFirst(User.class);
-            return diploma.getId();
+            return conn.createQuery(query).executeAndFetchFirst(User.class).getId();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return -1;
