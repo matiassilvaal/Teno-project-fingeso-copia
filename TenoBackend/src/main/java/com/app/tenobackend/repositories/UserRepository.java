@@ -7,8 +7,9 @@ import java.util.List;
 
 @Repository
 public interface UserRepository {
-
     int countUsers();
     List<User> getAllUsers();
+    User getOneUser(String id);
 
+    int getIdByCorreo(String correo);
 }

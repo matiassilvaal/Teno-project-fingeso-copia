@@ -26,4 +26,10 @@ public class UserService {
     public List<User> getAllDiploma(){
         return userRepository.getAllUsers();
     }
+
+    @GetMapping("/getbyid")
+    @ResponseBody
+    public User getOneDiploma(@RequestParam String id){
+        return userRepository.getOneUser(id);
+    }
 }

@@ -2,14 +2,14 @@ package com.app.tenobackend.models;
 
 public class User{
     private Integer id;
-    private String name;
+    private String correo;
 
-    public User(Integer id, String name){
+    public User(Integer id, String correo){
         this.id = id;
-        this.name = name;
+        this.correo = correo;
     }
     public Integer getId() {return this.id;}
     public void setId(Integer id){this.id = id;}
-    public String getName(){return this.name;}
-    public void setName(String name){this.name = name;}
+    public String getCorreo(){return this.correo;}
+    public void setCorreo(String name){this.correo = name;}
 }
