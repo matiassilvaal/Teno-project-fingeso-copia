@@ -5,7 +5,7 @@ public class Denounce {
     private Integer iddenunciante;
     private Integer iddenounced;
     private Integer idfiscal;
-    private String descripcion;
+    private String description;
     private String state;
 
     public Denounce(Integer id, Integer iddenunciante, Integer iddenounced, Integer idfiscal, String descripcion, String state){
@@ -13,7 +13,7 @@ public class Denounce {
         this.iddenunciante = iddenunciante;
         this.iddenounced = iddenounced;
         this.idfiscal = idfiscal;
-        this.descripcion = descripcion;
+        this.description = descripcion;
         this.state = state;
     }
 
@@ -21,7 +21,7 @@ public class Denounce {
     public Integer getIddenunciante(){return this.iddenunciante;}
     public Integer getIddenounced(){return this.iddenounced;}
     public Integer getIdfiscal(){return this.idfiscal;}
-    public String getDescripcion(){return this.descripcion;}
+    public String getDescription(){return this.description;}
     public String getState(){return this.state;}
 
     public void setId(Integer id) {
@@ -40,8 +40,8 @@ public class Denounce {
         this.idfiscal = idfiscal;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setState(String state) {

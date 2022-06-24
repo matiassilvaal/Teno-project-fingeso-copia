@@ -71,11 +71,11 @@ public class DenounceRepositoryImp implements DenounceRepository {
     public List<Denounce> getDenouncesByIdRol(String id, String type) {
         final String query;
         if (type.equals("fiscal")) {
-            query = "select * from denuncias where `idfiscal` =" + id;
+            query = "select * from denounces where idfiscal =" + id;
         } else if (type.equals("denunciante")) {
-            query = "select * from denuncias where `iddenunciante` =" + id;
+            query = "select * from denounces where iddenunciante =" + id;
         } else if (type.equals("denunciado")) {
-            query = "select * from denuncias where `iddenunced` =" + id;
+            query = "select * from denounces where iddenounced =" + id;
         } else {
             System.out.println("No se ingreso una adecuada lectura");
             return null;
