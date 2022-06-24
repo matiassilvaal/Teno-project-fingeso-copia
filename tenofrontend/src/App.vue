@@ -22,6 +22,7 @@
             <router-link style="color: #ff8414" to="/about" class="nav-link">About</router-link>
             <b-dropdown id="dropdown-1" text="Denuncias" variant="text-light">
               <b-dropdown-item><router-link style="color: #ff8414" to="/newdenuncia" class="nav-link">Ingresar Denuncias</router-link></b-dropdown-item>
+              <b-dropdown-item><router-link style="color: #ff8414" to="/denuncialist" class="nav-link">Ver Denuncias</router-link></b-dropdown-item>
             </b-dropdown>
           </div>
         </div>
@@ -49,13 +50,13 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #478dd3;
 }
 
 nav {
