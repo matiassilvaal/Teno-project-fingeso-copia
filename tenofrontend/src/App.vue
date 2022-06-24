@@ -28,6 +28,24 @@
       </div>
     </nav>
     <router-view />
+    <div class="container-fluid position-absolute top-100 mt-5">
+      <div class="row p-4 text-white" style="background-color: #24334a">
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <p class="h3">TENO-DGDE</p>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <p class="h5">Sitios de interes</p>
+          <a class="text-white text-decoration-none" href="https://direcciondegenero.usach.cl">DGDE</a>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <p class="h5">Documentacion</p>
+        </div>
+        <div class="col-xs-12">
+          <p class="text-white text-center">Todos los derechos resevados by @TENO</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </template>
 

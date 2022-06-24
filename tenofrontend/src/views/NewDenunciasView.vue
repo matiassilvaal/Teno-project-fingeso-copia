@@ -1,7 +1,7 @@
 <template>
-    <div class="mt-5">
+    <div class="mt-5 formulario">
         <h1 class="text-light">Ingresar una denuncia</h1>
-        <form class="m-5 mt-5">
+        <form class="">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label text-light d-flex">Correo institucional del
                     denunciante</label>
@@ -29,3 +29,11 @@
         </form>
     </div>
 </template>
+
+<style>
+.formulario{
+    margin-bottom: 4rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+</style>
