@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg" style="background-color: #004582;">
+    <nav class="navbar navbar-expand-lg" style="background-color: #004582">
       <div class="container-fluid">
-        <router-link to="/" class="navbar-brand text-light">TENO-DGDE</router-link>
+        <router-link to="/" class="navbar-brand text-light"
+          >TENO-DGDE</router-link
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -16,9 +18,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <router-link style="color: #ff8414;" to="/" class="nav-link">Home</router-link>
-            <router-link style="color: #ff8414;" to="/about" class="nav-link">About</router-link>
-            <router-link style="color: #ff8414;" to="#" class="nav-link">Denuncias</router-link>
+            <router-link style="color: #ff8414" to="/" class="nav-link">Home</router-link>
+            <router-link style="color: #ff8414" to="/about" class="nav-link">About</router-link>
+            <b-dropdown id="dropdown-1" text="Denuncias" variant="text-light">
+              <b-dropdown-item><router-link style="color: #ff8414" to="/newdenuncia" class="nav-link">Ingresar Denuncias</router-link></b-dropdown-item>
+            </b-dropdown>
           </div>
         </div>
       </div>
