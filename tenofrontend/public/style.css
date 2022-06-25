@@ -2,14 +2,17 @@ body {
     background-color: black;
 }
 
-d {
+d1 {
     color: #000000;
-    font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
+}
+
+d2 {
+    color: #000000;
+    font-size: 20px;
+    font-family: 'Helvetica';
     font-weight: bold;
     line-height: 30px;
     text-transform: capitalize;
     text-align: center;
     text-indent: 30px;
-    margin-bottom: 50px;
 }

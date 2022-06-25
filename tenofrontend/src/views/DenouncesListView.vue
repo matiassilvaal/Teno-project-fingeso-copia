@@ -1,39 +1,65 @@
+<style>
+@import url('http://fonts.cdnfonts.com/css/coolvetica-2');
+</style>
+
 <template>
   <div class="mt-4">
-    <h1 class="text-light">Denuncias Activas</h1>
-    <div class="row">
-      <div class="col-6">
-        <template>
-          <div>
-            <b-table
-              :items="items"
-              :fields="fields"
-              striped hover head-variant="dark"
-              class="text-black bg-white"
-              >
-              <template v-slot:cell(ver)="data">
-                <router-link :to="
-                { name: 'DenounceView', params: { id: data.item.id_denuncia }
-                }"
-                  tag="button"
-                  class="btn btn-succes"><b-icon icon="eye-fill" />
-                </router-link>
+    <template>
+      <div class="mt-4 mb-4">
+        <b-container fluid>
+          <b-row>
+            <b-col class="mb-4">
+              <d1 class="text-center" style="font-family:coolvetica;font-size:40px;">Denuncias activas</d1>
+            </b-col>
+          </b-row>
+          <div class="row">
+            <div class="col-6">
+              <d1 style="font-family:coolvetica;font-size:30px;">Denuncias realizadas</d1>
+              <template>
+                <div>
+                  <b-table :items="items" :fields="fields" striped hover head-variant="dark"
+                    class="text-black bg-white">
+                    <template v-slot:cell(ver)="data">
+                      <router-link :to="
+                      {
+                        name: 'DenounceView', params: { id: data.item.id }
+                      }" tag="button" class="btn btn-succes">
+                        <b-icon icon="eye-fill" />
+                      </router-link>
+                    </template>
+                  </b-table>
+                </div>
               </template>
-            </b-table>
+            </div>
+            <div class="col-6">
+              <d1 style="font-family:coolvetica;font-size:30px;">Denuncias Recibidas</d1>
+              <template>
+                <div>
+                  <b-table :items="items" :fields="fields" striped hover head-variant="dark"
+                    class="text-black bg-white">
+                    <template v-slot:cell(ver)="data">
+                      <router-link :to="
+                      {
+                        name: 'DenounceView', params: { id: data.item.id }
+                      }" tag="button" class="btn btn-succes">
+                        <b-icon icon="eye-fill" />
+                      </router-link>
+                    </template>
+                  </b-table>
+                </div>
+              </template>
+            </div>
           </div>
-        </template>
+        </b-container>
       </div>
-      <div class="col-6" style="border: 1px solid">
-        <h1 class="text-light">Denuncias realizadas</h1>
-      </div>
-    </div>
+    </template>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 export default {
-  data () {
+  data() {
     return {
       fields: [
         { key: 'id_denuncia', label: 'ID' },
@@ -45,7 +71,7 @@ export default {
       ]
     }
   },
-  created () {
+  created() {
     axios.get('http://localhost:8082/denounces/get-all')
       .then(response => {
         response.data.forEach(element => {

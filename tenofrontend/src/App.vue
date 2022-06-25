@@ -20,7 +20,7 @@
           <div class="navbar-nav">
             <router-link style="color: #ff8414" to="/" class="nav-link">Home</router-link>
             <router-link style="color: #ff8414" to="/about" class="nav-link">About</router-link>
-            <b-dropdown id="dropdown-1" text="Denuncias" variant="text-light">
+            <b-dropdown style="color: #ff8414" id="dropdown-1" text="Denuncias" variant="text-light">
               <b-dropdown-item><router-link style="color: #ff8414" to="/newdenuncia" class="nav-link">Ingresar Denuncias</router-link></b-dropdown-item>
               <b-dropdown-item><router-link style="color: #ff8414" to="/denuncialist" class="nav-link">Ver Denuncias</router-link></b-dropdown-item>
             </b-dropdown>
