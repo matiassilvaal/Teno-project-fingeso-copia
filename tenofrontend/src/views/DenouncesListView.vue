@@ -13,7 +13,7 @@
               >
               <template v-slot:cell(ver)="data">
                 <router-link :to="
-                { name: 'DenounceView', params: { id: data.item.id }
+                { name: 'DenounceView', params: { id: data.item.id_denuncia }
                 }"
                   tag="button"
                   class="btn btn-succes"><b-icon icon="eye-fill" />
@@ -42,9 +42,6 @@ export default {
         { key: 'ver', label: 'Ver' }
       ],
       items: [
-        { id_denuncia: 40, estado: 'Dickerson', descripcion: 'Macdonald' },
-        { id_denuncia: 21, estado: 'Larsen', descripcion: 'Shaw' },
-        { id_denuncia: 89, estado: 'Geneva', descripcion: 'Wilson' }
       ]
     }
   },

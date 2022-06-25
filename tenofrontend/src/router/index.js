@@ -30,6 +30,11 @@ const routes = [
     path: '/newdenuncia',
     name: 'newdenuncia',
     component: () => import('../views/NewDenunciasView.vue')
+  },
+  {
+    path: '/denuncia/:id',
+    name: 'DenounceView',
+    component: () => import('../views/DenounceView.vue')
   }/* ,
   {
     path: '/denuncialist',
