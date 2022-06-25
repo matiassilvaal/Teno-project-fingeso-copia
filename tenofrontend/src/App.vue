@@ -28,7 +28,9 @@
         </div>
       </div>
     </nav>
-    <router-view />
+    <div class="container-fluid">
+<router-view />
+    </div>
     <div class="container-fluid position-absolute top-100 mt-5">
       <div class="row p-4 text-white" style="background-color: #24334a">
         <div class="col-xs-12 col-md-6 col-lg-4">

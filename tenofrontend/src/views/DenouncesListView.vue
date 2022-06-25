@@ -22,8 +22,6 @@
             </b-table>
           </div>
         </template>
-        <!--grillo chupame el pico embarao y la conchetumare pollo culiao hijo de la gran perra-->
-        <!--perro culiao-->
       </div>
       <div class="col-6" style="border: 1px solid">
         <h1 class="text-light">Denuncias realizadas</h1>
@@ -33,6 +31,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -48,6 +47,18 @@ export default {
         { id_denuncia: 89, estado: 'Geneva', descripcion: 'Wilson' }
       ]
     }
+  },
+  created () {
+    axios.get('http://localhost:8082/denounces/get-all')
+      .then(response => {
+        response.data.forEach(element => {
+          this.items.push({
+            id_denuncia: element.id,
+            estado: element.state,
+            descripcion: element.description
+          })
+        })
+      })
   }
 }
 </script>

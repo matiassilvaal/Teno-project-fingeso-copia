@@ -22,17 +22,17 @@ public class DenunciaService {
         return String.format("Tienes en total %s denuncias", total);
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/get-all")
     public List<Denounce> getAllDiploma(){
         return denounceRepository.getAllDenounces();
     }
-    @GetMapping("/getbyidrol")
+    @GetMapping("/get-by-idrol")
     @ResponseBody
     public List<Denounce> getDenounceByRol(@RequestParam String id, String type){
         return denounceRepository.getDenouncesByIdRol(id, type);
     }
 
-    @GetMapping("/getbyid")
+    @GetMapping("/get-by-id")
     @ResponseBody
     public Denounce getOneDiploma(@RequestParam String id){
         return denounceRepository.getOneDenounce(id);
@@ -51,7 +51,7 @@ public class DenunciaService {
     * 2: error en correo denunciado
     * -1: error al ingreso en la base de datos
     **/
-    @GetMapping("/insert")
+    @PostMapping("/insert")
     @ResponseBody
     int insertDenounce(@RequestParam String description, String denunciante, String denounced){
         return denounceRepository.insertDenounce(description, denunciante, denounced);
@@ -70,7 +70,7 @@ public class DenunciaService {
      * 0 : correcta actualización
      * -1: error al ingreso en la base de datos
      * */
-    @GetMapping("/updatedenounce")
+    @GetMapping("/update-denounce")
     @ResponseBody
     int updateStateDenounce(@RequestParam String id, String state){
         return denounceRepository.updateStateDenounce(id, state);
