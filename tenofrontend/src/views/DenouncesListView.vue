@@ -17,12 +17,12 @@
               <d1 style="font-family:coolvetica;font-size:30px;">Denuncias realizadas</d1>
               <template>
                 <div>
-                  <b-table :items="items" :fields="fields" striped hover head-variant="dark"
+                  <b-table :items="itemsReal" :fields="fields" striped hover head-variant="dark"
                     class="text-black bg-white">
                     <template v-slot:cell(ver)="data">
                       <router-link :to="
                       {
-                        name: 'DenounceView', params: { id: data.item.id }
+                        name: 'DenounceView', params: { id: data.itemsReal }
                       }" tag="button" class="btn btn-succes">
                         <b-icon icon="eye-fill" />
                       </router-link>
@@ -35,12 +35,12 @@
               <d1 style="font-family:coolvetica;font-size:30px;">Denuncias Recibidas</d1>
               <template>
                 <div>
-                  <b-table :items="items" :fields="fields" striped hover head-variant="dark"
+                  <b-table :items="itemsRecib" :fields="fields" striped hover head-variant="dark"
                     class="text-black bg-white">
                     <template v-slot:cell(ver)="data">
                       <router-link :to="
                       {
-                        name: 'DenounceView', params: { id: data.item.id }
+                        name: 'DenounceView', params: { id: data.itemsRecib }
                       }" tag="button" class="btn btn-succes">
                         <b-icon icon="eye-fill" />
                       </router-link>
@@ -67,15 +67,28 @@ export default {
         { key: 'descripcion', label: 'Descripción' },
         { key: 'ver', label: 'Ver' }
       ],
-      items: [
+      itemsReal: [
+      ],
+      itemsRecib: [
       ]
     }
   },
   created() {
-    axios.get('http://localhost:8082/denounces/get-all')
+    console.log(localStorage.getItem('iduser'))
+    axios.get('http://localhost:8082/denounces/get-by-idrol?id='+localStorage.getItem('iduser')+'&type=denunciante')
       .then(response => {
         response.data.forEach(element => {
-          this.items.push({
+          this.itemsReal.push({
+            id_denuncia: element.id,
+            estado: element.state,
+            descripcion: element.description
+          })
+        })
+      })
+    axios.get('http://localhost:8082/denounces/get-by-idrol?id='+localStorage.getItem('iduser')+'&type=denunciado')
+      .then(response => {
+        response.data.forEach(element => {
+          this.itemsRecib.push({
             id_denuncia: element.id,
             estado: element.state,
             descripcion: element.description

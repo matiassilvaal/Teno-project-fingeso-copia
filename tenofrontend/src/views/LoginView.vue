@@ -1,6 +1,13 @@
 <template>
     <div class="mt-5" v-on:keyup.enter="push">
-        <h1 class="primary">Login</h1>
+        <button id="alert" v-on:click="alertHidden" hidden class="button-alert">
+          <div class="myalert">
+            <p>
+              Hubo un poblema con el correo ingresado
+            </p>
+          </div>
+        </button>
+        <h1 class="primary">T e n o</h1>
         <p class="black">Ingrese su correo</p>
         <input type="email" id="correo" placeholder="tucorreo@usach.cl" class="input">
         <b-form-group label="Selecciona tu tipo de usuario" v-slot="{ ariaDescribedby }">
@@ -22,6 +29,40 @@
 
 .title{
     color:black;
+}
+
+.myalert{
+  background-color: rgb(226, 65, 25);
+  color: white;
+  border-radius: 5px;
+  height: 100%;
+  font-size: 1.2rem;
+  padding-top: 0.7rem;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.button-alert{
+  height: 3rem;
+  border-style: none;
+  width: 50rem;
+  padding: 0px;
+  margin: 1rem;
+  transition: box-shadow 0.3s ease;
+  transition: height 0.3s ease;
+  transition: width 0.1s ease;
+}
+
+.myalert:hover{
+
+  padding-top: 1rem;
+}
+
+.button-alert:hover{
+  box-shadow:  0 0.1rem 0.4rem rgba(0,0,0,0.3);
+  margin: 0.6rem;
+  height: 4rem;
+  width: 51rem;
 }
 
 .btn{
@@ -66,20 +107,24 @@ export default {
     }
   },
   methods: {
+    alertHidden(){
+      document.getElementById('alert').hidden = true
+    },
     push () {
-      axios.get('http://localhost:8082/users/getidbycorreo?correo=' + (document.getElementById('correo').value))
+      axios.get('http://localhost:8082/users/get-id-by-correo?correo="' + (document.getElementById('correo').value)+'"')
         .then(response => {
           if (response.data > -1) {
             this.controller(response.data)
           } else {
-            window.location.href = '/login'
+            document.getElementById('alert').hidden = false
           }
         })
     },
     controller (id) {
       localStorage.setItem('iduser', id)
       localStorage.setItem('typeuser', document.getElementById('correo').value)
-      window.location.href = '/'
+      console.log("entranding")
+      window.location.href = '/#/home'
     }
   }
 }

@@ -1,15 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
+import LoadingView from '../views/LoadingView'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'login',
+    component: LoginView
+  },
+  {
+    path: '/',
+    name: 'login',
+    component: LoginView
   },
   {
     path: '/denuncialist',
@@ -17,9 +22,9 @@ const routes = [
     component: () => import('../views/DenouncesListView.vue')
   },
   {
-    path: '/login',
-    name: 'login',
-    component: LoginView
+    path: '/home',
+    name: 'home',
+    component: LoadingView
   },
   {
     path: '/about',
