@@ -100,19 +100,32 @@ public class DenounceRepositoryImp implements DenounceRepository {
     * 0 : correcto ingreso
     * 1: error en correo denunciante
     * 2: error en correo denunciado
+    * 3: error con ambos correos
+    * 4: descripcion vacia
     * -1: error al ingreso en la base de datos
     * */
     public int insertDenounce(String description, String denunciante, String denounced){
         Connection conn = sql2o.open();
         int total = countDenounces();
         final UserRepositoryImp getter = new UserRepositoryImp(sql2o);
+
         Integer iddenunciante = getter.getIdByCorreo(denunciante);
+
+        Integer iddenunciado = getter.getIdByCorreo(denounced);
+        if(iddenunciante == -1 && iddenunciado == -1){
+            return 3;
+        }
+
         if(iddenunciante == -1){
             return 1;
         }
-        Integer iddenunciado = getter.getIdByCorreo(denounced);
-        if(iddenunciado == -1){
+
+        if(iddenunciado == -1) {
             return 2;
+        }
+
+        if(description.equals("")){
+            return 4;
         }
 
         final String query = "insert into denounces (id, iddenunciante, iddenounced, idfiscal, description, state)"+
