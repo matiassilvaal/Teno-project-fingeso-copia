@@ -1,17 +1,44 @@
 <template>
-    <div class="mt-5 formulario">
+    <div class="mt-5 mb-5 formulario">
         <h1 class="text-dark">Ingresar una denuncia</h1>
-        <h1 class="text-light">Ingresar una denuncia</h1>
-        <form>
+        <form id="form-denuncia">
+            <div class="alert alert-danger alert-dismissible fade show" id="alertdenciante" hidden role="alert">
+                <div class="myalert">
+                    Hubo un poblema con el correo ingresado del denunciante
+                    <button type="button" v-on:click="alertHiddendenunciante" class="btn-close" data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="alert alert-success alert-dismissible fade show" id="alertsucces" hidden role="alert">
+                <div class="myalert">
+                    denuncia ingresada con exito
+                    <button type="button" v-on:click="alertHiddensucces" class="btn-close" data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+                </div>
+            </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1"  class="form-label text-dark d-flex">Correo institucional del
+                <label for="exampleInputEmail1" class="form-label text-dark d-flex">Correo institucional del
                     denunciante</label>
                 <input type="email" class="form-control" id="denunciante" aria-describedby="emailHelp" />
+            </div>
+            <div class="alert alert-danger alert-dismissible fade show" id="alertdenunciado" hidden role="alert">
+                <div class="myalert">
+                    Hubo un poblema con el correo ingresado del denuncido
+                    <button type="button" v-on:click="alertHiddendenunciado" class="btn-close" data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label text-dark d-flex">Correo institucional del
                     denunciado</label>
                 <input type="email" class="form-control" id="denunciado" aria-describedby="emailHelp" />
+            </div>
+            <div class="alert alert-danger alert-dismissible fade show" id="alertdescription" hidden role="alert">
+                <div class="myalert">
+                    la descripcion no puede estar vacia
+                    <button type="button" v-on:click="alertHiddendescription" class="btn-close" data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="floatingTextarea" class="text-dark d-flex">Detalles de la denuncia</label>
@@ -39,9 +66,46 @@
 import axios from 'axios'
 
 export default {
-    methods:{
-        insert(){
-            axios.post('http://localhost:8082/denounces/insert?description=' +document.getElementById('descripcion').value +'&denunciante="' + document.getElementById('denunciante').value+'"&denounced="'+document.getElementById('denunciado').value+'"').then(response => {console.log(response)})
+
+    methods: {
+        alertHiddendenunciante() {
+            document.getElementById('alertdenciante').hidden = true
+        },
+        alertHiddendenunciado() {
+            document.getElementById('alertdenunciado').hidden = true
+        },
+        alertHiddensucces() {
+            document.getElementById('alertsucces').hidden = true
+        },
+        alertHiddendescription() {
+            document.getElementById('alertdescription').hidden = true
+        },
+        insert() {
+            axios.post('http://localhost:8082/denounces/insert?description=' + document.getElementById('descripcion').value + '&denunciante="' + document.getElementById('denunciante').value + '"&denounced="' + document.getElementById('denunciado').value + '"')
+                .then(response => {
+                    console.log(response)
+                    if (response.data == 0) {
+                        document.getElementById('alertsucces').hidden = false
+                        document.getElementById('alertdenciante').hidden = true
+                        document.getElementById('alertdenunciado').hidden = true
+                        document.getElementById('alertdescription').hidden = true
+                        document.getElementById('form-denuncia').reset()
+                    } else if (response.data == 1) {
+                        document.getElementById('alertdenciante').hidden = false
+                        document.getElementById('alertdenunciado').hidden = true
+                    } else if (response.data == 2) {
+                        document.getElementById('alertdenunciado').hidden = false
+                        document.getElementById('alertdenciante').hidden = true
+                    }else if (response.data == 4){
+                        document.getElementById('alertdescription').hidden = false
+                        document.getElementById('alertdenunciado').hidden = true
+                    }else{
+                        document.getElementById('alertdescription').hidden = false
+                        document.getElementById('alertdenunciado').hidden = false
+                        document.getElementById('alertdenciante').hidden = false
+                        document.getElementById('alertsucces').hidden = true
+                    }
+                })
         }
     }
 }
