@@ -2,16 +2,16 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg" style="background-color: #EF7D00">
       <div class="container-fluid">
-        <router-link to="/" class="navbar-brand">TENO-DGDE</router-link>
+        <router-link style="color: #ffffff;font-size: 25px;" to="/" class="navbar-brand">TENO-DGDE</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <router-link v-if="selected == 0" to="/" class="nav-link">Home</router-link>
-            <router-link v-if="selected == 0" to="/about" class="nav-link">About</router-link>
-            <b-nav-item-dropdown text="Denuncias" right>
+            <router-link v-if="selected == 0" style="color: #000" to="/" class="nav-link">Home</router-link>
+            <router-link v-if="selected == 0" style="color: #000" to="/about" class="nav-link">About</router-link>
+            <b-nav-item-dropdown toggle-class="text-dark" text="Denuncias" right>
               <b-dropdown-item>
                 <router-link style="color: #ff8414" to="/newdenuncia" class="nav-link">Ingresar Denuncias</router-link>
               </b-dropdown-item>
@@ -68,6 +68,11 @@
 nav {
   padding: 20px;
 }
+
+.navbar-dark .navbar-nav .nav-link{
+      color:black!important
+    }
+
 </style>
 
 <script>
