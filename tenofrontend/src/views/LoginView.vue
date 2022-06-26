@@ -54,7 +54,6 @@
 }
 
 .myalert:hover{
-
   padding-top: 1rem;
 }
 
