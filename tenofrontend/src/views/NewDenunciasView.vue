@@ -1,7 +1,7 @@
 <template>
     <div class="mt-5 mb-5 formulario">
-        <h1 class="text-dark">Ingresar una denuncia</h1>
-        <form id="form-denuncia">
+        <d1 class="text-dark">Ingresar una denuncia</d1>
+        <form id="form-denuncia" class="p-5">
             <div class="alert alert-danger alert-dismissible fade show" id="alertdenciante" hidden role="alert">
                 <div class="myalert">
                     Hubo un poblema con el correo ingresado del denunciante
