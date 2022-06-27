@@ -5,7 +5,7 @@
         <template v-slot:cell(ver)="data">
             <router-link :to="
             {
-            name: 'DenounceView', params: { id: data.Denouncements }
+            name: 'DenounceView', params: { id: data.item }
             }" tag="button" class="btn btn-succes">
             <b-icon icon="eye-fill" />
             </router-link>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'ListDenouncements',
   props: {

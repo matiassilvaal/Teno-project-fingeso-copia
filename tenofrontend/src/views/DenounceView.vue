@@ -9,13 +9,13 @@
           <b-card-text align="left"><strong>Correo institucional del denunciado: </strong>catalina.olivares@usach.cl</b-card-text>
           <b-card-text align="left"><strong>Correo institucional del fiscal asignado: </strong>clemente.aguilar@usach.cl</b-card-text>
           <b-card-text align="left" text-tag="h3"><strong>Descripción de la denuncia: </strong></b-card-text>
-          <b-card-text align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus interdum tellus. Nullam dignissim finibus tortor congue varius. Proin lacus turpis, gravida ac nibh a, tempor congue sem. Curabitur mi turpis, maximus eu bibendum a, iaculis quis erat. Aenean nisi ipsum, eleifend ut rutrum non, pellentesque commodo turpis. Integer porta, mi nec mattis tincidunt, purus nulla pharetra ante, sit amet suscipit risus lectus sed sem. Nam pellentesque, justo ac bibendum ultricies, nibh velit mattis tortor, ac dictum ipsum metus eget tellus. Duis mollis, dui non tempus luctus, sem metus condimentum arcu, sit amet vestibulum dui orci in erat. Nam ac luctus odio, in consequat quam. Nunc non gravida tortor. Phasellus faucibus convallis fermentum. Maecenas tincidunt egestas libero sed commodo. Sed auctor quam nec mollis vulputate.</b-card-text>
+          <b-card-text align="justify">{{descripcion}}</b-card-text>
           <b-card-text align="left"><strong>Estado de la denuncia: </strong>
             <!-- poner un if para ver si es fiscal del caso -->
-            <b-dropdown id="dropdown-1" text="Estado actual" class="m-md-2">
-              <b-dropdown-item>Estado 1</b-dropdown-item>
-              <b-dropdown-item>Estado 2</b-dropdown-item>
-              <b-dropdown-item>Estado 3</b-dropdown-item>
+            <b-dropdown id="dropdown-1" :text=estado class="m-md-2">
+              <b-dropdown-item>Ingresado</b-dropdown-item>
+              <b-dropdown-item>En curso</b-dropdown-item>
+              <b-dropdown-item>Finalizado</b-dropdown-item>
             </b-dropdown>
           </b-card-text>
             <b-row>
@@ -29,14 +29,17 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
     data () {
         return {
-        id: ''
+        id: '',
         }
     },
     created () {
-        this.id = this.$route.params.id;
+        this.id = this.$route.params.id.id_denuncia;
+        this.descripcion = this.$route.params.id.descripcion;
+        this.estado = this.$route.params.id.estado;
     },
 }
 </script>

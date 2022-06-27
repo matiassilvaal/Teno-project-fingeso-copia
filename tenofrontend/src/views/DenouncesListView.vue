@@ -19,7 +19,7 @@
             </div>
             <div class="col-6">
               <d2>Denuncias Recibidas</d2>
-              <ListDenouncements :denouncements="itemsReal" />
+              <ListDenouncements :denouncements="itemsRecib" />
             </div>
           </div>
         </b-container>

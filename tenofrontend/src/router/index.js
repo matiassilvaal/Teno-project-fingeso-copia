@@ -42,7 +42,7 @@ const routes = [
     component: () => import('../views/DenouncesListViewFiscal.vue')
   },
   {
-    path: '/denuncia/:id',
+    path: '/denuncia',
     name: 'DenounceView',
     component: () => import('../views/DenounceView.vue')
   }/* ,
