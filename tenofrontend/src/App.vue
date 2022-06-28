@@ -88,6 +88,9 @@ export default ({
       povDGDE: 0,
       logged: 1,
     }
+  },
+  created() {
+    localStorage.setItem('tipo', 1) // 0: usuario comun 1: fiscal, cambiar despues cuando este mas avanzado, solo de debug
   }
 })
 </script>
