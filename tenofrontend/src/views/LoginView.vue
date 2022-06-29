@@ -121,7 +121,8 @@ export default {
     },
     controller (id) {
       localStorage.setItem('iduser', id)
-      localStorage.setItem('typeuser', document.getElementById('correo').value)
+      localStorage.setItem('correo', document.getElementById('correo').value)
+      localStorage.setItem('typeuser', this.selected)
       console.log("entranding")
       window.location.href = '/#/home'
     }

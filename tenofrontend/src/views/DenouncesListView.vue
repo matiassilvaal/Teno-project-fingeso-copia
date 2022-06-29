@@ -9,17 +9,17 @@
         <b-container fluid>
           <b-row>
             <b-col class="mb-4">
-              <d1 class="text-center">Denuncias activas</d1>
+              <h1 class="text-center">Denuncias activas</h1>
             </b-col>
           </b-row>
           <div class="row">
             <div class="col-6">
-              <d2>Denuncias realizadas</d2>
-                <ListDenouncements :denouncements="itemsReal" />
+              <h2>Denuncias realizadas</h2>
+                <ListDenouncements :Denouncements="itemsReal" />
             </div>
             <div class="col-6">
-              <d2>Denuncias Recibidas</d2>
-              <ListDenouncements :denouncements="itemsRecib" />
+              <h2>Denuncias Recibidas</h2>
+              <ListDenouncements :Denouncements="itemsRecib" />
             </div>
           </div>
         </b-container>

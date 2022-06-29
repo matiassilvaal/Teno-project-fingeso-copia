@@ -52,7 +52,16 @@ export default {
   created() {
     this.loading()
     setTimeout(() => {
-        window.location.href = '/#/denuncialist'
+        if(localStorage.getItem('typeuser') == 'denunciador'){
+            window.location.href = '/#/denuncialist'
+        }
+        else if(localStorage.getItem('typeuser') == 'fiscal'){
+            window.location.href = '/#/denuncialistfiscal'
+        }
+        else if(localStorage.getItem('typeuser') == 'dgde'){
+            window.location.href = '/#/newdenuncia'
+        }
+        
     }, 700);
   }
 }

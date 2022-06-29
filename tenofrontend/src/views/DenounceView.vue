@@ -10,8 +10,7 @@
           <b-card-text align="left" text-tag="h3"><strong>Descripción de la denuncia: </strong></b-card-text>
           <b-card-text align="justify">{{descripcion}}</b-card-text>
           <b-card-text align="left"><strong>Estado de la denuncia: </strong>
-            <!-- Comprueba si fiscal (1) o usuario normal (0) -->
-            <b-dropdown v-if="tipo == 1" aria-role="list" v-bind:text="(selectedState.name)">
+            <b-dropdown v-if="tipo == 'fiscal'" aria-role="list" v-bind:text="(selectedState.name)">
               <b-dropdown-item
                 v-for="(state, index) in estados"
                 :key="index"
@@ -22,9 +21,8 @@
             <strong v-else>{{estado}} </strong>
           </b-card-text>
             <b-row>
-              <!-- Comprueba si fiscal (1) o usuario normal (0) -->
-              <b-col lg="1"><b-button size="lg" to="/denuncialist">Volver</b-button></b-col>
-              <b-col lg="1" v-if="tipo == 1"><b-button @click="push" size="lg">Confirmar</b-button></b-col>
+              <b-col><b-button class="mt-4" size="lg" to="/home">Volver</b-button></b-col>
+              <b-col  v-if="tipo == 'fiscal'"><b-button @click="push" class="mt-4" size="lg" to="/home">Confirmar</b-button></b-col>
             </b-row>        
         </b-card-body>
       </b-card>
@@ -42,17 +40,14 @@ export default {
         denunciante: '',
         denunciado: '',
         fiscal: '',
-        tipo: 0,
-        estados:[{
-          id: 1,
-          name: "Ingresado",
-        },
+        tipo: '',
+        estados:[
         {
-          id: 2,
+          id: 1,
           name: "En curso",
         },
         {
-          id: 3,
+          id: 2,
           name: "Finalizado",
         }],
         selectedState: {
@@ -63,7 +58,7 @@ export default {
     },
     
     created () {
-        this.tipo = localStorage.getItem('tipo');
+        this.tipo = localStorage.getItem('typeuser');
         this.id = this.$route.params.id.id_denuncia;
         this.descripcion = this.$route.params.id.descripcion;
         this.estado = this.$route.params.id.estado;
@@ -90,12 +85,7 @@ export default {
     },
     methods: {
       push(){
-      let put = {
-        id: this.id,
-        state: 'asignado',
-      };
-      console.log(this.selectedState.name);
-      axios.put("http://localhost:8082/denounces/update-denounce", put).then((result) => {
+      axios.patch("http://localhost:8082/denounces/update-denounce?id="+this.id+"&state="+this.selectedState.name).then((result) => {
         console.log(result);
       });
     },

@@ -11,9 +11,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <router-link v-if="povCommonUser == 1" style="color: #000; font-size: 19px;" to="/denuncialist" class="nav-link">Denuncias</router-link>
-            <router-link v-if="povDGDE == 1" style="color: #000; font-size: 19px;" to="/newdenuncia" class="nav-link">Ingresar Denuncias</router-link>
-            <router-link v-if="povFiscal == 1" style="color: #000; font-size: 19px;" to="/denuncialistfiscal" class="nav-link">Denuncias Asignadas</router-link>
+            <router-link v-if="povCommonUser == 1 && logged == 1" style="color: #000; font-size: 19px;" to="/denuncialist" class="nav-link">Denuncias</router-link>
+            <router-link v-if="povDGDE == 1 && logged == 1" style="color: #000; font-size: 19px;" to="/newdenuncia" class="nav-link">Ingresar Denuncias</router-link>
+            <router-link v-if="povFiscal == 1 && logged == 1" style="color: #000; font-size: 19px;" to="/denuncialistfiscal" class="nav-link">Denuncias Asignadas</router-link>
           </div>
         </div>
         <div class="form-inline my-2 my-lg-0">
@@ -89,8 +89,5 @@ export default ({
       logged: 1,
     }
   },
-  created() {
-    localStorage.setItem('tipo', 1) // 0: usuario comun 1: fiscal, cambiar despues cuando este mas avanzado, solo de debug
-  }
 })
 </script>
