@@ -70,7 +70,7 @@ public class DenunciaService {
      * 0 : correcta actualización
      * -1: error al ingreso en la base de datos
      * */
-    @GetMapping("/update-denounce")
+    @PatchMapping("/update-denounce")
     @ResponseBody
     int updateStateDenounce(@RequestParam String id, String state){
         return denounceRepository.updateStateDenounce(id, state);

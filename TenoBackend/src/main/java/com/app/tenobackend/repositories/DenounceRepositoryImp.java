@@ -138,7 +138,7 @@ public class DenounceRepositoryImp implements DenounceRepository {
                     .addParameter("iddenounced",iddenunciado)
                     .addParameter("idfiscal",-1)
                     .addParameter("description",description)
-                    .addParameter("state","ingresado")
+                    .addParameter("state","Ingresado")
                     .executeUpdate();
             return 0;
         } catch (Exception e) {
@@ -157,7 +157,7 @@ public class DenounceRepositoryImp implements DenounceRepository {
      * -1: error al ingreso en la base de datos
      * */
     public int updateStateDenounce(String id, String state){
-        if(!state.equals("asignado") && !state.equals("finalizado")){
+        if(!state.equals("En curso") && !state.equals("Finalizado")){
             return 1;
         }
 
