@@ -11,12 +11,12 @@
         <b-container fluid>
           <b-row>
             <b-col class="mb-4">
-              <d1 class="text-center" style="font-family:coolvetica;font-size:30px;">Denuncias asignadas</d1>
+              <h1 class="text-center" style="font-family:coolvetica;font-size:30px;">Denuncias asignadas</h1>
             </b-col>
           </b-row>
             <div class="row">
                 <div class="col-6 centered">
-                    <ListDenouncements :denouncements="itemsRecib" />
+                    <ListDenouncements :Denouncements="itemsRecib" />
                 </div>
           </div>
         </b-container>

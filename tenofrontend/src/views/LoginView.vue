@@ -123,7 +123,6 @@ export default {
       localStorage.setItem('iduser', id)
       localStorage.setItem('mail', document.getElementById('correo').value)
       localStorage.setItem('typeuser', this.selected)
-
       window.location.href = '/#/home'
     }
   }

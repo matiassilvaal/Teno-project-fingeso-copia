@@ -95,21 +95,14 @@ export default {
     },
     methods: {
       push(){
-      let put = {
-        id: this.id,
-        state: 'asignado',
-      };
-      console.log(this.selectedState.name);
-      axios.patch("http://localhost:8082/denounces/update-denounce?id=1&state=Finalizado").then((result) => {
-        console.log(result);
-      });
+      axios.patch("http://localhost:8082/denounces/update-denounce?id="+this.id+"&state="+this.selectedState.name);
     },
     setItem: function(state) {
       this.selectedState = state;
     },
   },
-    beforeCreate(){
-        if(!(localStorage.getItem('typeuser') == "fiscal") || !(localStorage.getItem('typeuser') == 'fiscal')){
+  beforeCreate(){
+      if(!(localStorage.getItem('typeuser') == "fiscal") && !(localStorage.getItem('typeuser') == "denunciador")){
             window.location.href = "/#/home"
         }
     } 

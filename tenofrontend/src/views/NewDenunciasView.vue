@@ -2,7 +2,7 @@
 <div>
     <Navbar/>
     <div class="mt-5 mb-5 formulario" style="padding-bottom: 3rem;">
-        <d1 class="text-dark">Ingresar una denuncia</d1>
+        <h1 class="text-dark">Ingresar una denuncia</h1>
         <form id="form-denuncia" class="p-5">
             <div class="alert alert-danger alert-dismissible fade show" id="alertdenciante" hidden role="alert">
                 <div class="myalert">
@@ -92,7 +92,6 @@ export default {
         insert() {
             axios.post('http://localhost:8082/denounces/insert?description=' + document.getElementById('descripcion').value + '&denunciante="' + document.getElementById('denunciante').value + '"&denounced="' + document.getElementById('denunciado').value + '"')
                 .then(response => {
-                    console.log(response)
                     if (response.data == 0) {
                         document.getElementById('alertsucces').hidden = false
                         document.getElementById('alertdenciante').hidden = true
