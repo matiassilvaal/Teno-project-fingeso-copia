@@ -3,9 +3,11 @@
 </style>
 
 <template>
-  <div class="mt-4">
+<div>
+<Navbar/>
+  <div class="mt-4" style="padding-bottom: 3rem;">
     <template>
-      <div class="mt-4 mb-4">
+      <div class="mt-4 mb-4" >
         <b-container fluid>
           <b-row>
             <b-col class="mb-4">
@@ -21,6 +23,8 @@
       </div>
     </template>
   </div>
+<Footer/>
+</div>
 </template>
 
 <style>
@@ -31,10 +35,14 @@
 </style>
 <script>
 import ListDenouncements from '../components/ListDenouncements'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import axios from 'axios'
 export default {
   components: {
-    ListDenouncements
+    ListDenouncements,
+    Navbar,
+    Footer
   },
   data() {
     return {
@@ -59,6 +67,11 @@ export default {
           })
         })
       })
-  }
+  },
+    beforeCreate(){
+        if(!(localStorage.getItem('typeuser') == "fiscal")){
+            window.location.href = "/#/home"
+        }
+    }
 }
 </script>

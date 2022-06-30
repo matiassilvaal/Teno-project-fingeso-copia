@@ -52,13 +52,17 @@ export default {
   created() {
     this.loading()
     setTimeout(() => {
-        if(localStorage.getItem('typeuser') == 'denunciador'){
+        var typeuser = localStorage.getItem('typeuser')
+        if(!typeuser){
+            window.location.href = "/#/"
+        }
+        else if(typeuser == 'denunciador'){
             window.location.href = '/#/denuncialist'
         }
-        else if(localStorage.getItem('typeuser') == 'fiscal'){
+        else if(typeuser == 'fiscal'){
             window.location.href = '/#/denuncialistfiscal'
         }
-        else if(localStorage.getItem('typeuser') == 'dgde'){
+        else if(typeuser == 'dgde'){
             window.location.href = '/#/newdenuncia'
         }
         

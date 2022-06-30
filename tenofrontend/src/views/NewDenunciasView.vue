@@ -1,5 +1,7 @@
 <template>
-    <div class="mt-5 mb-5 formulario">
+<div>
+    <Navbar/>
+    <div class="mt-5 mb-5 formulario" style="padding-bottom: 3rem;">
         <d1 class="text-dark">Ingresar una denuncia</d1>
         <form id="form-denuncia" class="p-5">
             <div class="alert alert-danger alert-dismissible fade show" id="alertdenciante" hidden role="alert">
@@ -52,6 +54,8 @@
             <button @click='insert' type="" class="btn btn-primary d-flex">Enviar</button>
         </form>
     </div>
+    <Footer/>
+</div>
 </template>
 
 <style>
@@ -64,9 +68,14 @@
 
 <script>
 import axios from 'axios'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 export default {
-
+    components: {
+      Navbar,
+      Footer
+    },
     methods: {
         alertHiddendenunciante() {
             document.getElementById('alertdenciante').hidden = true
@@ -106,6 +115,11 @@ export default {
                         document.getElementById('alertsucces').hidden = true
                     }
                 })
+        }
+    },
+    beforeCreate(){
+        if(!(localStorage.getItem('typeuser') == "dgde")){
+            window.location.href = "/#/home"
         }
     }
 }

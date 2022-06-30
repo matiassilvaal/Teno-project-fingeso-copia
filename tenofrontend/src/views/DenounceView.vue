@@ -1,5 +1,7 @@
 <template>
-  <div class="mt-3">
+<div>
+  <Navbar/>
+  <div class="mt-3" style="padding-bottom: 1rem;" >
     <b-card-group deck class="mt-5">
       <b-card bg-variant="light" title="Información de la denuncia" title-tag="h1" border-variant="secondary" class="text-dark mx-auto text-center w-50">
          <b-card-body>
@@ -28,10 +30,18 @@
       </b-card>
     </b-card-group>
   </div>
+  <Footer/>
+</div>
 </template>
 <script>
 import axios from 'axios'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 export default {
+    components: {
+      Navbar,
+      Footer
+    },
     data () {
         return {
         id: '',
@@ -85,13 +95,23 @@ export default {
     },
     methods: {
       push(){
-      axios.patch("http://localhost:8082/denounces/update-denounce?id="+this.id+"&state="+this.selectedState.name).then((result) => {
+      let put = {
+        id: this.id,
+        state: 'asignado',
+      };
+      console.log(this.selectedState.name);
+      axios.patch("http://localhost:8082/denounces/update-denounce?id=1&state=Finalizado").then((result) => {
         console.log(result);
       });
     },
     setItem: function(state) {
       this.selectedState = state;
     },
-  } 
+  },
+    beforeCreate(){
+        if(!(localStorage.getItem('typeuser') == "fiscal") || !(localStorage.getItem('typeuser') == 'fiscal')){
+            window.location.href = "/#/home"
+        }
+    } 
 }
 </script>

@@ -3,7 +3,9 @@
 </style>
 
 <template>
-  <div class="mt-4">
+<div>
+  <Navbar/>
+  <div class="mt-4" style="padding-bottom: 3rem;">
     <template>
       <div class="mt-4 mb-4">
         <b-container fluid>
@@ -26,14 +28,20 @@
       </div>
     </template>
   </div>
+  <Footer/>
+</div>
 </template>
 
 <script>
 import ListDenouncements from '../components/ListDenouncements'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import axios from 'axios'
 export default {
   components: {
-    ListDenouncements
+    ListDenouncements,
+    Navbar,
+    Footer
   },
   data() {
     return {
@@ -70,6 +78,11 @@ export default {
           })
         })
       })
+  },
+  beforeCreate() {
+      if(!(localStorage.getItem('typeuser') == "denunciador")){
+          window.location.href = "/#/home"
+      }
   }
 }
 </script>
