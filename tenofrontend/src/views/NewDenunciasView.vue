@@ -6,7 +6,7 @@
         <form id="form-denuncia" class="p-5">
             <div class="alert alert-danger alert-dismissible fade show" id="alertdenciante" hidden role="alert">
                 <div class="myalert">
-                    Hubo un poblema con el correo ingresado del denunciante
+                    Hubo un problema con el correo ingresado del denunciante
                     <button type="button" v-on:click="alertHiddendenunciante" class="btn-close" data-bs-dismiss="alert"
                         aria-label="Close"></button>
                 </div>
@@ -25,7 +25,7 @@
             </div>
             <div class="alert alert-danger alert-dismissible fade show" id="alertdenunciado" hidden role="alert">
                 <div class="myalert">
-                    Hubo un poblema con el correo ingresado del denuncido
+                    Hubo un problema con el correo ingresado del denunciado
                     <button type="button" v-on:click="alertHiddendenunciado" class="btn-close" data-bs-dismiss="alert"
                         aria-label="Close"></button>
                 </div>
@@ -48,7 +48,7 @@
             </div>
             <div class="mb-3">
                 <label for="floatingTextarea" class="text-dark d-flex">Medidas de proteccion (opcional)</label>
-                <textarea class="form-control" placeholder="Medidas de proteccion" id="floatingTextarea"></textarea>
+                <textarea class="form-control" placeholder="Medidas de proteccion" id="security"></textarea>
             </div>
             <button @click='insert' type="" class="btn btn-primary d-flex">Enviar</button>
         </form>
@@ -89,7 +89,7 @@ export default {
             document.getElementById('alertdescription').hidden = true
         },
         insert() {
-            axios.post('http://localhost:8082/denounces/insert?description=' + document.getElementById('descripcion').value + '&denunciante="' + document.getElementById('denunciante').value + '"&denounced="' + document.getElementById('denunciado').value + '"')
+            axios.post('http://localhost:8082/denounces/insert?description=' + document.getElementById('descripcion').value + '&denunciante="' + document.getElementById('denunciante').value + '"&denounced="' + document.getElementById('denunciado').value + '"'+ '&security=' + document.getElementById('security').value)
                 .then(response => {
                     if (response.data == 0) {
                         document.getElementById('alertsucces').hidden = false
