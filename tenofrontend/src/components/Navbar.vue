@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg" style="background-color: #EF7D00">
       <div class="container-fluid">
         <img src="https://i.imgur.com/JB4sZTQ.png" title="usach logo" width="46" height="60" />
-        <router-link style="color: #ffffff;font-size: 30px;letter-spacing: 3px;" to="/" class="navbar-brand">TENO-DGDE
+        <router-link style="color: #ffffff;font-size: 30px;letter-spacing: 3px;" to="/home" class="navbar-brand">TENO-DGDE
         </router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +57,6 @@ export default {
   mounted () {
     this.$forceUpdate()
     let typeuser = localStorage.getItem('typeuser')
-    console.log("asds a",typeuser)
     if(typeuser){
       this.logged = 1
       if (typeuser == 'denunciador'){

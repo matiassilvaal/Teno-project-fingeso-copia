@@ -44,7 +44,6 @@
             </div>
             <div class="mb-3">
                 <label for="floatingTextarea" class="text-dark d-flex">Detalles de la denuncia</label>
-                <label for="floatingTextarea" class="text-light d-flex">Detalles de la denuncia</label>
                 <textarea class="form-control" placeholder="Detalles de la denuncia" id="descripcion"></textarea>
             </div>
             <div class="mb-3">

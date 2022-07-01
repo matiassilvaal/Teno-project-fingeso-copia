@@ -1,5 +1,8 @@
 <template>
+    <div>
+    <Navbar/>
     <div class="mt-5" v-on:keyup.enter="push">
+    
         <button id="alert" v-on:click="alertHidden" hidden class="button-alert">
           <div class="myalert">
             <p>
@@ -23,6 +26,8 @@
     </b-form-group>
     <b-button @click="push"  variant="primary" size="lg" class="btn">Ingresar</b-button>
     </div>
+    <Footer/>
+  </div>
 </template>
 
 <style scoped>
@@ -93,8 +98,13 @@ label{
 
 <script>
 import axios from 'axios'
-
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 export default {
+  components: {
+      Navbar,
+      Footer
+  },
   data () {
     return {
       selected: 'denunciador',

@@ -9,6 +9,7 @@
           <b-card-text align="left" class="pt-3"><strong>Correo institucional del denunciante: </strong>{{denunciante}}</b-card-text>
           <b-card-text align="left"><strong>Correo institucional del denunciado: </strong>{{denunciado}}</b-card-text>
           <b-card-text align="left"><strong>Correo institucional del fiscal asignado: </strong>{{fiscal}}</b-card-text>
+          <b-card-text align="left" v-if="tipo == 'fiscal'"><strong>Medidas de protección (opcional): </strong>{{medida}}</b-card-text>
           <b-card-text align="left" text-tag="h3"><strong>Descripción de la denuncia: </strong></b-card-text>
           <b-card-text align="justify">{{descripcion}}</b-card-text>
           <b-card-text align="left"><strong>Estado de la denuncia: </strong>
@@ -51,6 +52,7 @@ export default {
         denunciado: '',
         fiscal: '',
         tipo: '',
+        medida: 'No disponible',
         estados:[
         {
           id: 1,
@@ -74,6 +76,10 @@ export default {
         this.estado = this.$route.params.id.estado;
         axios.get('http://localhost:8082/denounces/get-by-id?id='+this.id).
         then(response => {
+            if(response.data.security != null && response.data.security != ''){
+                this.medida = response.data.security;
+            }
+            
             axios.get('http://localhost:8082/users/get-by-id?id='+response.data.iddenunciante).
               then(response => {
               this.denunciante = response.data.correo;
