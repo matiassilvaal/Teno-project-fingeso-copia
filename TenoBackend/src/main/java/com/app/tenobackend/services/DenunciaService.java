@@ -53,8 +53,8 @@ public class DenunciaService {
     **/
     @PostMapping("/insert")
     @ResponseBody
-    int insertDenounce(@RequestParam String description, String denunciante, String denounced){
-        return denounceRepository.insertDenounce(description, denunciante, denounced);
+    int insertDenounce(@RequestParam String description, String denunciante, String denounced, String security){
+        return denounceRepository.insertDenounce(description, denunciante, denounced, security);
     }
 
     /*

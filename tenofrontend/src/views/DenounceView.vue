@@ -1,7 +1,7 @@
 <template>
 <div>
   <Navbar/>
-  <div class="mt-3" style="padding-bottom: 1rem;" >
+  <div class="mt-3" style="padding-bottom: 3rem;" >
     <b-card-group deck class="mt-5">
       <b-card bg-variant="light" title="Información de la denuncia" title-tag="h1" border-variant="secondary" class="text-dark mx-auto text-center w-50">
          <b-card-body>

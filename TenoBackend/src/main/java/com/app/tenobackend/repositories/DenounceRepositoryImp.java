@@ -104,9 +104,10 @@ public class DenounceRepositoryImp implements DenounceRepository {
     * 4: descripcion vacia
     * -1: error al ingreso en la base de datos
     * */
-    public int insertDenounce(String description, String denunciante, String denounced){
+    public int insertDenounce(String description, String denunciante, String denounced, String security){
         Connection conn = sql2o.open();
         int total = countDenounces();
+
         final UserRepositoryImp getter = new UserRepositoryImp(sql2o);
 
         Integer iddenunciante = getter.getIdByCorreo(denunciante);
@@ -128,8 +129,8 @@ public class DenounceRepositoryImp implements DenounceRepository {
             return 4;
         }
 
-        final String query = "insert into denounces (id, iddenunciante, iddenounced, idfiscal, description, state)"+
-                "values (:id, :iddenunciante, :iddenounced, :idfiscal, :description, :state)";
+        final String query = "insert into denounces (id, iddenunciante, iddenounced, idfiscal, description, state, security)"+
+                "values (:id, :iddenunciante, :iddenounced, :idfiscal, :description, :state, :security)";
 
         try (conn) {
             conn.createQuery(query)
@@ -139,6 +140,7 @@ public class DenounceRepositoryImp implements DenounceRepository {
                     .addParameter("idfiscal",-1)
                     .addParameter("description",description)
                     .addParameter("state","Ingresado")
+                    .addParameter("security",security)
                     .executeUpdate();
             return 0;
         } catch (Exception e) {
