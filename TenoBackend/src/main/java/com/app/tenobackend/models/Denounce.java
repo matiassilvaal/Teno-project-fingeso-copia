@@ -7,14 +7,16 @@ public class Denounce {
     private Integer idfiscal;
     private String description;
     private String state;
+    private String security;
 
-    public Denounce(Integer id, Integer iddenunciante, Integer iddenounced, Integer idfiscal, String descripcion, String state){
+    public Denounce(Integer id, Integer iddenunciante, Integer iddenounced, Integer idfiscal, String descripcion, String state, String security){
         this.id = id;
         this.iddenunciante = iddenunciante;
         this.iddenounced = iddenounced;
         this.idfiscal = idfiscal;
         this.description = descripcion;
         this.state = state;
+        this.security = security;
     }
 
     public Integer getId(){return this.id;}
@@ -23,6 +25,7 @@ public class Denounce {
     public Integer getIdfiscal(){return this.idfiscal;}
     public String getDescription(){return this.description;}
     public String getState(){return this.state;}
+    public String getSecurity(){return this.security;}
 
     public void setId(Integer id) {
         this.id = id;
@@ -47,4 +50,5 @@ public class Denounce {
     public void setState(String state) {
         this.state = state;
     }
+    public void setSecurity(String security){this.security=security;}
 }
