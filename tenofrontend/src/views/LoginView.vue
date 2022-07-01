@@ -135,6 +135,12 @@ export default {
       localStorage.setItem('typeuser', this.selected)
       window.location.href = '/#/home'
     }
+  },
+  beforeCreate(){
+      if(localStorage.getItem('typeuser')){
+        console.log("se ejecuta esto")
+          window.location.href = "/#/home"
+      }
   }
 }
 </script>
