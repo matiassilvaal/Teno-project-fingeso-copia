@@ -1,32 +1,51 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <div class="container-fluid" style="padding-left: 0px;padding-right: 0px;">
+      <router-view />
+    </div>
   </div>
 </template>
 
-<style>
+<style scoped>
+.gg-user-remove {
+  /* This value will multiple the actual size  */
+  --ggs: 1.4;
+}
+
+@import url('http://fonts.cdnfonts.com/css/coolvetica-2');
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  padding-left: 0px;
+  font-family: 'coolvetica';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+  letter-spacing: 1px;
+  padding: 0 0 0 0;
 }
 </style>
+
+<script>
+export default ({
+  name : "App",
+  data() {
+    return {
+      povCommonUser: 0,
+      povFiscal: 0,
+      povDGDE: 0,
+      logged: 0,
+    }
+  },
+  methods: {
+    logout () {
+      this.logged = 0
+      this.povCommonUser = 0
+      this.povFiscal = 0
+      this.povDGDE = 0
+      localStorage.clear()
+      window.location.href = "/#/"
+    }
+  },
+
+})
+</script>

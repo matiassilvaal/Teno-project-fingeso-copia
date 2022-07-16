@@ -69,6 +69,7 @@ public class UserRepositoryImp implements UserRepository{
         }
     }
 
+    @Override
     public int getIdByCorreo(String correo){
         final String query = "select * from users where correo ="+correo;
 

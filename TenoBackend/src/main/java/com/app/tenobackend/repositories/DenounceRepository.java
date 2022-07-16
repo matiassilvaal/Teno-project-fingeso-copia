@@ -14,7 +14,7 @@ public interface DenounceRepository {
     Denounce getOneDenounce(String id);
     List<Denounce> getDenouncesByIdRol(String id, String type);
 
-    int insertDenounce(String description, String denunciante, String denounced);
+    int insertDenounce(String description, String denunciante, String denounced, String security);
 
     int updateStateDenounce(String id, String state);
 }

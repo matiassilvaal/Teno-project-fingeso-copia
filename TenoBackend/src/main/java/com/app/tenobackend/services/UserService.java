@@ -22,17 +22,17 @@ public class UserService {
         return String.format("Tienes en total %s usuarios", total);
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/get-all")
     public List<User> getAllDiploma(){
         return userRepository.getAllUsers();
     }
 
-    @GetMapping("/getbyid")
+    @GetMapping("/get-by-id")
     @ResponseBody
     public User getOneDiploma(@RequestParam String id){
         return userRepository.getOneUser(id);
     }
-    @GetMapping("/getidbycorreo")
+    @GetMapping("/get-id-by-correo")
     @ResponseBody
     public int getIdByCorreo(@RequestParam String correo){
         return userRepository.getIdByCorreo(correo);

@@ -100,23 +100,37 @@ public class DenounceRepositoryImp implements DenounceRepository {
     * 0 : correcto ingreso
     * 1: error en correo denunciante
     * 2: error en correo denunciado
+    * 3: error con ambos correos
+    * 4: descripcion vacia
     * -1: error al ingreso en la base de datos
     * */
-    public int insertDenounce(String description, String denunciante, String denounced){
+    public int insertDenounce(String description, String denunciante, String denounced, String security){
         Connection conn = sql2o.open();
         int total = countDenounces();
+
         final UserRepositoryImp getter = new UserRepositoryImp(sql2o);
+
         Integer iddenunciante = getter.getIdByCorreo(denunciante);
+
+        Integer iddenunciado = getter.getIdByCorreo(denounced);
+        if(iddenunciante == -1 && iddenunciado == -1){
+            return 3;
+        }
+
         if(iddenunciante == -1){
             return 1;
         }
-        Integer iddenunciado = getter.getIdByCorreo(denounced);
-        if(iddenunciado == -1){
+
+        if(iddenunciado == -1) {
             return 2;
         }
 
-        final String query = "insert into denounces (id, iddenunciante, iddenounced, idfiscal, description, state)"+
-                "values (:id, :iddenunciante, :iddenounced, :idfiscal, :description, :state)";
+        if(description.equals("")){
+            return 4;
+        }
+
+        final String query = "insert into denounces (id, iddenunciante, iddenounced, idfiscal, description, state, security)"+
+                "values (:id, :iddenunciante, :iddenounced, :idfiscal, :description, :state, :security)";
 
         try (conn) {
             conn.createQuery(query)
@@ -125,7 +139,8 @@ public class DenounceRepositoryImp implements DenounceRepository {
                     .addParameter("iddenounced",iddenunciado)
                     .addParameter("idfiscal",-1)
                     .addParameter("description",description)
-                    .addParameter("state","ingresado")
+                    .addParameter("state","Ingresado")
+                    .addParameter("security",security)
                     .executeUpdate();
             return 0;
         } catch (Exception e) {
@@ -144,7 +159,7 @@ public class DenounceRepositoryImp implements DenounceRepository {
      * -1: error al ingreso en la base de datos
      * */
     public int updateStateDenounce(String id, String state){
-        if(!state.equals("asignado") && !state.equals("finalizado")){
+        if(!state.equals("En curso") && !state.equals("Finalizado")){
             return 1;
         }
 
