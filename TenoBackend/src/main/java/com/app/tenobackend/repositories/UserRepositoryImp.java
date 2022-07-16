@@ -14,12 +14,15 @@ public class UserRepositoryImp implements UserRepository{
     @Autowired
     private Sql2o sql2o;
 
+    public UserRepositoryImp(Sql2o conn){
+        this.sql2o = conn;
+    }
     @Override
     public int countUsers() {
         Integer total = 0;
         Connection conn = sql2o.open();
         try(conn){
-            total = conn.createQuery("SELECT COUNT(*) From Users").executeScalar(Integer.class);
+            total = conn.createQuery("SELECT COUNT(*) From users").executeScalar(Integer.class);
             return total;
         }
         catch(Exception e){
@@ -48,6 +51,33 @@ public class UserRepositoryImp implements UserRepository{
 
         finally{
             conn.close();
+        }
+    }
+
+    @Override
+    public User getOneUser(String id){
+        final String query = "select * from users where `id` ="+id;
+        final User diploma;
+
+        Connection conn = sql2o.open();
+        try (conn){
+            diploma = conn.createQuery(query).executeAndFetchFirst(User.class);
+            return diploma;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public int getIdByCorreo(String correo){
+        final String query = "select * from users where correo ="+correo;
+
+        Connection conn = sql2o.open();
+        try (conn){
+            return conn.createQuery(query).executeAndFetchFirst(User.class).getId();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return -1;
         }
     }
 }

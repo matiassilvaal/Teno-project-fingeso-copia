@@ -1,4 +1,4 @@
-# teno-frontend
+# tenofrontend
 
 ## Project setup
 ```
